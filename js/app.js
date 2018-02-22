@@ -890,7 +890,7 @@ function js_panel_generate_domains(returndata) {
 					'<label for="domains_add_checkbox" class="form-check-label" >' +
 					'<input class="form-check-input" type="checkbox" id="domains_add_checkbox"> Publish' +
 					'</label>' +
-					'<button type="submit" class="btn btn-primary disabled">Add</button>' +
+					'<button type="submit" class="btn btn-primary">Add</button>' +
 					'<div class="container"><span style="color:red; display:none" id="domains_add_input_help" class="help-inline">Wrong input type! Make sure you have a dot and at least one letter before and two after it.</span></div>' +
 					'</form>' +
 					'<table class="table table-striped table-bordered table-hover">' +
@@ -937,7 +937,7 @@ function js_panel_generate_blacklist(returndata) {
 				'<div class="form-group">' +
 				'<input type="text" class="form-control" id="blacklist_add_input" placeholder="IP address[/mask]" minlength="7" required data-validator-name="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(?:|\/[1-2]?[0-9]|\/3[0-2])$">' +
 				'</div>' +
-				'<button type="submit" class="btn btn-primary disabled">Add</button>' +
+				'<button type="submit" class="btn btn-primary">Add</button>' +
 				'<span style="color:#bf9dff; display:none" id="blacklist_add_input_help" class="help-inline"> Wrong input type! Make sure you write ip in right format (4 numbers between 0 and 255 divided by dot) and mask (if exists) is between 0 and 32</span>' +
 				'</form>' +
 				'<table class="table table-striped table-bordered table-hover">' +
