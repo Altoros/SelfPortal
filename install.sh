@@ -246,35 +246,35 @@ then
 	echo
 	while [[ -z "$vcenter" ]]
 	do
-		read -p "Enter VMWare vCenter server address (like https://vcenter.example.com): " $vcenter
+		read -p "Enter VMWare vCenter server address (like https://vcenter.example.com): " vcenter
 	done
 	while [[ -z "$vcenteruser" ]]
 	do
-		read -p "Okay. Now we need to login. Enter VMWare vCenter user: " $vcenteruser
+		read -p "Okay. Now we need to login. Enter VMWare vCenter user: " vcenteruser
 	done
 	while [[ -z "$vcenterpasswd" ]]
 	do
-		read -s -p "Enter password: " $vcenterpasswd
+		read -s -p "Enter password: " vcenterpasswd
 	done
 	while [[ -z "$vcentertemplatefolder" ]]
 	do
-		read -p "SelfPortal VMs based on VM templates. Where should SP search for this templates? Please, enter search folder: " $vcentertemplatefolder
+		read -p "SelfPortal VMs based on VM templates. Where should SP search for this templates? Please, enter search folder: " vcentertemplatefolder
 	done
 	while [[ -z "$vcentervmsfolder" ]]
 	do
-		read -p "SelfPortal need a place, where it will put created VMs. Where is it? Please, enter folder name: " $vcentervmsfolder
+		read -p "SelfPortal need a place, where it will put created VMs. Where is it? Please, enter folder name: " vcentervmsfolder
 	done
 	while [[ -z "$vcenterrp" ]]
 	do
-		read -p "And a resource pool too: " $vcenterrp
+		read -p "And a resource pool too: " vcenterrp
 	done
 	while [[ -z "$vcenterds" ]]
 	do
-		read -p "Which datastore SP VMs should use? Enter: " $vcenterds
+		read -p "Which datastore SP VMs should use? Enter: " vcenterds
 	done
 	while [[ -z "$vcenterdc" ]]
 	do
-		read -p "In which datacenter SP should search for VMs? Enter: " $vcenterdc
+		read -p "In which datacenter SP should search for VMs? Enter: " vcenterdc
 	done
     cat >>/var/www/selfportal/config/config.php <<EOL
 //vSphere CONFIG
