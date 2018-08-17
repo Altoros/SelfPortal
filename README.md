@@ -168,6 +168,6 @@ This project is licensed under Apache 2.0 License. See [license](LICENSE) file f
 - [x] VMs Backups
 - [x] Mounting ISO images to vSphere VMs
 - [x] Info for users about why vSphere VM was failed to create
-- [] Limits for departments
-- [] Support more providers
+- [ ] Limits for departments
+- [ ] Support more providers
 
