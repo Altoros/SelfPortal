@@ -4,7 +4,8 @@ VCENTER_USERNAME: admin
 VCENTER_PASSWORD: qwerty123
 VCENTER_CLUSTER: new
 VCENTER_RESOURCE_POOL: /Resources
-VCENTER_DATACENTER: nexenta2
+VCENTER_DATACENTER: Altoros
+VCENTER_DATASTORE: datastore
 
 VM_NAME: new-vm
 VM_FOLDER: /path/to/folder #SelfPortal folder + username
@@ -12,6 +13,7 @@ VM_FOLDER: /path/to/folder #SelfPortal folder + username
 # VM creation
 TEMPLATE_NAME: template-name
 VM_DESCRIPTION: "Created ad 01.01.2011 by SelfPortal. Authorized by used v.pupkin"
+DOMAIN_DNS_NAME: altoros.corp
 DOMAIN_DNS_SERVERS:
   - 192.168.1.1
   - 192.168.1.2

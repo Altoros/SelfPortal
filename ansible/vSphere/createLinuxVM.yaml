@@ -8,6 +8,7 @@
         password: "{{ VCENTER_PASSWORD }}"
         cluster: "{{ VCENTER_CLUSTER }}"
         datacenter: "{{ VCENTER_DATACENTER }}"
+        datastore: "{{ VCENTER_DATASTORE }}"
         resource_pool: "{{ VCENTER_RESOURCE_POOL }}"
         name: "{{ VM_NAME }}"
         folder: "{{ VM_FOLDER }}"

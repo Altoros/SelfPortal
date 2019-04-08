@@ -7,6 +7,7 @@
         username: "{{ VCENTER_USERNAME }}"
         password: "{{ VCENTER_PASSWORD }}"
         datacenter: "{{ VCENTER_DATACENTER }}"
+        datastore: "{{ VCENTER_DATASTORE }}"
         folder: "{{ VM_FOLDER }}"
         uuid: "{{ VM_NAME }}"
         state: "{{ SNAPSHOT_STATE }}"
