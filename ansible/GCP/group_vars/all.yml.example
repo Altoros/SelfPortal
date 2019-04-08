@@ -1,0 +1,13 @@
+# Common variables
+GCP_PROJECT_ID: altoros
+GCP_SERVICE_ACCOUNT: bla@bla.com
+GCP_CREDENTIALS_FILE: /path/to/creds.json
+
+# VM creation
+TEMPLATE_NAME: template-name
+VM_NAME: nameofthevm
+VM_DESCRIPTION: "Created ad 01.01.2011 by SelfPortal. Authorized by used v.pupkin"
+DEFAULT_DISK_SIZE: 30
+DEFAULT_VM_SIZE: n1-standard-1
+DEFAULT_ZONE: europe-west2-a
+SSH_KEY: idrsablablabla

@@ -1,0 +1,30 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - vsphere_guest:
+        vcenter_hostname: "{{ VCENTER_ADDRESS }}"
+        username: "{{ VCENTER_USERNAME }}"
+        password: "{{ VCENTER_PASSWORD }}"
+        cluster: "{{ VCENTER_CLUSTER }}"
+        resource_pool: "{{ VCENTER_RESOURCE_POOL }}"
+        guest: "{{ VM_NAME }}"
+        validate_certs: no
+        vm_extra_config:
+          folder: "{{ VM_FOLDER }}"
+        vmware_guest_facts: yes        
+        
+#Typical output:
+#- hw_eth0:
+#  - addresstype: "assigned"
+#    label: "Network adapter 1"
+#    macaddress: "00:22:33:33:44:55"
+#    macaddress_dash: "00-22-33-33-44-55"
+#    ipaddresses: ['192.0.2.100', '2001:DB8:56ff:feac:4d8a'] - List of IPs
+#    summary: "VM Network"
+#  hw_guest_full_name: "newvm001" - VM name
+#  hw_guest_id: "rhel6_64Guest"
+#  hw_memtotal_mb: 2048 - RAM
+#  hw_name: "centos64Guest"
+#  hw_power_status: "POWERED ON" - STATUS
+#  hw_processor_count: 2 - Processor
+#  hw_product_uuid: "ef50bac8-2845-40ff-81d9-675315501dac" - Unique ID

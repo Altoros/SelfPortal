@@ -1,0 +1,15 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Create snapshot
+      vmware_guest_snapshot:
+        hostname: "{{ VCENTER_ADDRESS }}"
+        username: "{{ VCENTER_USERNAME }}"
+        password: "{{ VCENTER_PASSWORD }}"
+        datacenter: "{{ VCENTER_DATACENTER }}"
+        folder: "{{ VM_FOLDER }}"
+        uuid: "{{ VM_NAME }}"
+        state: "{{ SNAPSHOT_STATE }}"
+        snapshot_name: "{{ SNAPSHOT_NAME }}"
+        description: "{{ SNAPSHOT_DESCRIPTION }}"
+        validate_certs: no

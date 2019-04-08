@@ -1,0 +1,42 @@
+# Common variables
+VCENTER_ADDRESS: vcenter.local
+VCENTER_USERNAME: admin
+VCENTER_PASSWORD: qwerty123
+VCENTER_CLUSTER: new
+VCENTER_RESOURCE_POOL: /Resources
+VCENTER_DATACENTER: nexenta2
+
+VM_NAME: new-vm
+VM_FOLDER: /path/to/folder #SelfPortal folder + username
+
+# VM creation
+TEMPLATE_NAME: template-name
+VM_DESCRIPTION: "Created ad 01.01.2011 by SelfPortal. Authorized by used v.pupkin"
+DOMAIN_DNS_SERVERS:
+  - 192.168.1.1
+  - 192.168.1.2
+# For Windows-OS VM creation
+DOMAIN_NAME: altoros
+DOMAIN_ADMIN: admin
+DOMAIN_PASSWORD: password
+
+# VM management
+VM_STATE: powered_off
+# Can be one of the following
+#present
+#powered_off
+#absent
+#powered_on
+#restarted
+#reconfigured
+
+# Snapshot management
+SNAPSHOT_NAME: name
+SNAPSHOT_DESCRIPTION: "Created ad 01.01.2011 by SelfPortal. Authorized by used v.pupkin"
+SNAPSHOT_STATE: absent
+
+# Can be one of the following:
+#present
+#absent
+#revert
+#remove_all

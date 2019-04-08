@@ -1,0 +1,15 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - vsphere_guest:
+        vcenter_hostname: "{{ VCENTER_ADDRESS }}"
+        username: "{{ VCENTER_USERNAME }}"
+        password: "{{ VCENTER_PASSWORD }}"
+        cluster: "{{ VCENTER_CLUSTER }}"
+        resource_pool: "{{ VCENTER_RESOURCE_POOL }}"
+        guest: "{{ VM_NAME }}"
+        validate_certs: no
+        vm_extra_config:
+          folder: "{{ VM_FOLDER }}"
+        state: "{{ VM_STATE }}"
+        force: yes

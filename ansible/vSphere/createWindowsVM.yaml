@@ -1,0 +1,23 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - vmware_guest:
+        annotation: "{{ VM_DESCRIPTION }}"
+        hostname: "{{ VCENTER_ADDRESS }}"
+        username: "{{ VCENTER_USERNAME }}"
+        password: "{{ VCENTER_PASSWORD }}"
+        cluster: "{{ VCENTER_CLUSTER }}"
+        datacenter: "{{ VCENTER_DATACENTER }}"
+        resource_pool: "{{ VCENTER_RESOURCE_POOL }}"
+        name: "{{ VM_NAME }}"
+        folder: "{{ VM_FOLDER }}"
+        template: "{{ TEMPLATE_NAME }}"
+        validate_certs: no
+        state: poweredon
+        customization:
+          dns_servers: "{{ DOMAIN_DNS_SERVERS }}"
+          domain: "{{ DOMAIN_DNS_NAME }}"
+          hostname: "{{ VM_NAME }}"
+          domainadmin: "{{ DOMAIN_ADMIN }}"
+          domainadminpassword: "{{ DOMAIN_PASSWORD }}"
+          joindomain: "{{ DOMAIN_NAME }}"
