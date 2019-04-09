@@ -17,13 +17,19 @@ DOMAIN_DNS_NAME: altoros.corp
 DOMAIN_DNS_SERVERS:
   - 192.168.1.1
   - 192.168.1.2
+  
+NETWORK_NAME: SelfPortal
+NETWORK_DEVICE: vmxnet3
+
+# For Linux-OS VM creation
+DEFAULT_LOGIN: selfportal
+DEFAULT_PASSWORD: selfportal
+SSH_KEY: idrsablablabla
+
 # For Windows-OS VM creation
 DOMAIN_NAME: altoros
 DOMAIN_ADMIN: admin
 DOMAIN_PASSWORD: password
-
-NETWORK_NAME: SelfPortal
-NETWORK_DEVICE: vmxnet3
 
 # VM management
 VM_STATE: powered_off
