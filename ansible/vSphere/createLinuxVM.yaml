@@ -28,7 +28,7 @@
         username: "{{ VCENTER_USERNAME }}"
         password: "{{ VCENTER_PASSWORD }}"
         validate_certs: no
-        name: "{{ VM_FOLDER }}"
+        name: "{{ VM_NAME }}"
         folder: "{{ VM_FOLDER }}"
       register: facts
     
@@ -37,18 +37,22 @@
         groups: just_created
         ansible_user: "{{ DEFAULT_LOGIN }}"
         ansible_ssh_pass: "{{ DEFAULT_PASSWORD }}"
-        ansible_become_user: "{{ DEFAULT_LOGIN }}"
+        ansible_become_user: "root"
         ansible_become_pass: "{{ DEFAULT_PASSWORD }}"
-        
+
 - hosts: just_created
+  become: true
   tasks:
     - authorized_key:
         user: "{{ DEFAULT_LOGIN }}"
         state: present
         key: "{{ SSH_KEY }}"
-        
-    - user:
-        name: "{{ DEFAULT_LOGIN }}"
-        shell: /bin/bash
-        groups: sudo
-        password: "{{ lookup('password', '/tmp/passwordfile chars=ascii_letters') }}"
+
+    - lineinfile: 
+        dest: /etc/ssh/sshd_config
+        regexp: '^(#\s*)?PasswordAuthentication' 
+        line: "PasswordAuthentication no"
+    
+    - service:
+        name: ssh
+        state: restarted
