@@ -1,15 +1,26 @@
 - hosts: localhost
   connection: local
   tasks:
-    - vsphere_guest:
-        vcenter_hostname: "{{ VCENTER_ADDRESS }}"
+    - vmware_guest:
+        hostname: "{{ VCENTER_ADDRESS }}"
         username: "{{ VCENTER_USERNAME }}"
         password: "{{ VCENTER_PASSWORD }}"
+        datacenter: "{{ VCENTER_DATACENTER }}" 
         cluster: "{{ VCENTER_CLUSTER }}"
         resource_pool: "{{ VCENTER_RESOURCE_POOL }}"
-        guest: "{{ VM_NAME }}"
+        name: "{{ VM_NAME }}"
         validate_certs: no
-        vm_extra_config:
-          folder: "{{ VM_FOLDER }}"
+        folder: "{{ VM_FOLDER }}"
         state: "{{ VM_STATE }}"
         force: yes
+
+    - vcenter_folder:
+        hostname: "{{ VCENTER_ADDRESS }}"
+        username: "{{ VCENTER_USERNAME }}"
+        password: "{{ VCENTER_PASSWORD }}"
+        datacenter: "{{ VCENTER_DATACENTER }}"
+        folder_name: "{{ VM_FOLDER.split('/')[-1] }}"
+        parent_folder: "{{ VM_FOLDER.split('/')[-2] }}"
+        state: "{{ VM_STATE }}"
+        validate_certs: no
+      when: VM_STATE == 'absent'

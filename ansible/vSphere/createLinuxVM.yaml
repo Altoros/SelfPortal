@@ -1,6 +1,16 @@
 - hosts: localhost
   connection: local
   tasks:
+    - vcenter_folder:
+        hostname: "{{ VCENTER_ADDRESS }}"
+        username: "{{ VCENTER_USERNAME }}"
+        password: "{{ VCENTER_PASSWORD }}"
+        datacenter: "{{ VCENTER_DATACENTER }}"
+        folder_name: "{{ VM_FOLDER.split('/')[-1] }}"
+        parent_folder: "{{ VM_FOLDER.split('/')[-2] }}"
+        state: present
+        validate_certs: no
+
     - vmware_guest:
         annotation: "{{ VM_DESCRIPTION }}"
         hostname: "{{ VCENTER_ADDRESS }}"
