@@ -22,6 +22,9 @@ DOMAIN_NAME: altoros
 DOMAIN_ADMIN: admin
 DOMAIN_PASSWORD: password
 
+NETWORK_NAME: SelfPortal
+NETWORK_DEVICE: vmxnet3
+
 # VM management
 VM_STATE: powered_off
 # Can be one of the following

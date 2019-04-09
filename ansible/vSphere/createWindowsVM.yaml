@@ -15,6 +15,9 @@
         template: "{{ TEMPLATE_NAME }}"
         validate_certs: no
         state: poweredon
+        network:
+          - name: "{{ NETWORK_NAME }}"
+            device_type: "{{ NETWORK_DEVICE }}"
         customization:
           dns_servers: "{{ DOMAIN_DNS_SERVERS }}"
           domain: "{{ DOMAIN_DNS_NAME }}"
