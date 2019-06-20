@@ -4,7 +4,7 @@
         auth_kind: serviceaccount
         can_ip_forward: no
         machine_type: "{{ DEFAULT_VM_SIZE }}"
-        metadata: '{ "startup-script" : "echo adding_user...;useradd selfportal; mkdir -p /home/selfportal/.ssh; touch /home/selfportal/.ssh; echo "{{ SSH_KEY }}" >> /home/selfportal/.ssh/authorized_keys; chown selfportal:selfportal /home/selfportal -R;", "description" : "{{ VM_DESCRIPTION }}" }'
+        metadata: '{ "startup-script" : "{{ lookup('template', '{{ role_path }}/templates/userdata.txt.j2') }}", "description" : "{{ VM_DESCRIPTION }}" }'
         service_account_file: "{{ GCP_CREDENTIALS_FILE }}"
         name: "{{ VM_NAME }}"
         zone: "{{ DEFAULT_ZONE }}-a"

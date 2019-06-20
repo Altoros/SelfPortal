@@ -1,0 +1,33 @@
+# Common variables
+AWS_ACCESS_KEY: access_key
+AWS_SECRET_KEY: secret_key
+AWS_REGION: us-east-1
+VM_NAME: nameofthevm
+
+# VM creation
+TEMPLATE_NAME: template-name
+VM_DESCRIPTION: "Created ad 01.01.2011 by SelfPortal. Authorized by user v.pupkin"
+SSH_KEY: idrsablablabla
+SSH_KEY_NAME: petrovich #Can be a name of user here
+AWS_SUBNET: subnet-29e63245
+DEFAULT_VM_SIZE: t3.medium
+DEFAULT_DISK_SIZE: 100
+# Windows VM creation
+ADMIN_PASSWORD: password
+
+
+# VM management
+VM_STATE: stopped
+# Can be one of the following
+#present
+#restarted
+#running
+#stopped
+#absent - equal to terminate
+
+# Snapshot management
+SNAPSHOT_NAME: name
+SNAPSHOT_STATE: present
+# present absent revert
+SNAPSHOT_DESCRIPTION: "Created ad 01.01.2011 by SelfPortal. Authorized by user v.pupkin"
+# Can be either present or absent

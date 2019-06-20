@@ -1,0 +1,20 @@
+- hosts: localhost
+  tasks:
+    - gcp_compute_instance:
+        auth_kind: serviceaccount
+        service_account_file: "{{ GCP_CREDENTIALS_FILE }}"
+        name: "{{ VM_NAME }}"
+        zone: "{{ DEFAULT_ZONE }}-a"
+        state: present
+        status: "{{ VM_STATE }}"
+        project: "{{ GCP_PROJECT_ID }}"
+      when: VM_STATE is not 'absent'
+            
+    - gcp_compute_instance:
+        auth_kind: serviceaccount
+        service_account_file: "{{ GCP_CREDENTIALS_FILE }}"
+        name: "{{ VM_NAME }}"
+        zone: "{{ DEFAULT_ZONE }}-a"
+        state: absent
+        project: "{{ GCP_PROJECT_ID }}"
+      when: VM_STATE is 'absent'

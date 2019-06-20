@@ -1,0 +1,24 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - ec2:
+          aws_access_key: "{{ AWS_ACCESS_KEY }}"
+          aws_secret_key: "{{ AWS_SECRET_KEY }}"
+          region: "{{ AWS_REGION }}"
+          image: "{{ TEMPLATE_NAME }}"
+          volumes:
+            - device_name: /dev/sda
+              volume_type: gp2
+              volume_size: "{{ DEFAULT_DISK_SIZE }}"
+              delete_on_termination: true
+          instance_tags:
+            - key: created_by
+              value: Ansible
+            - key: description
+              value: "{{ VM_DESCRIPTION }}"
+          key_name: "{{ SSH_KEY_NAME }}"
+          state: present
+          assign_public_ip: yes
+          vpc_subnet_id: "{{ AWS_SUBNET }}"
+          user_data: "{{ lookup('template', '{{ role_path }}/templates/userdata.txt.j2') }}"
+          instance_type: "{{ DEFAULT_VM_SIZE }}"

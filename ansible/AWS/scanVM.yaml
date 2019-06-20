@@ -1,0 +1,8 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - ec2_instance_facts:
+        aws_access_key: "{{ AWS_ACCESS_KEY }}"
+        aws_secret_key: "{{ AWS_SECRET_KEY }}"
+        region: "{{ AWS_REGION }}"
+        instance_ids: "{{ VM_NAME }}"

@@ -1,0 +1,42 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Create gce snapshot
+      gce_snapshot:
+        instance_name: "{{ VM_NAME }}"
+        snapshot_name: "{{ SNAPSHOT_NAME }}"
+        state: "{{ SNAPSHOT_STATE }}"
+        credentials_file: "{{ GCP_CREDENTIALS_FILE }}"
+        project_id: "{{ GCP_PROJECT_ID }}"
+          
+    - gcp_compute_instance:
+        auth_kind: serviceaccount
+        can_ip_forward: no
+        machine_type: "{{ DEFAULT_VM_SIZE }}"
+        service_account_file: "{{ GCP_CREDENTIALS_FILE }}"
+        name: "{{ VM_NAME }}"
+        zone: "{{ DEFAULT_ZONE }}-a"
+        state: present
+        status: RUNNING
+        network_interfaces:
+          - access_configs:
+              - name: ExternalNAT
+                type: ONE_TO_ONE_NAT
+        project: "{{ GCP_PROJECT_ID }}"
+        disks:
+          - index: 0
+            boot: yes
+            auto_delete: yes
+            initialize_params:
+              disk_size_gb: "{{ DEFAULT_DISK_SIZE }}"
+            source: "{{ SNAPSHOT_NAME }}"
+        when: SNAPSHOT_STATE is 'revert'
+        
+    - gcp_compute_instance:
+        auth_kind: serviceaccount
+        service_account_file: "{{ GCP_CREDENTIALS_FILE }}"
+        name: "{{ VM_NAME }}"
+        zone: "{{ DEFAULT_ZONE }}-a"
+        state: absent
+        project: "{{ GCP_PROJECT_ID }}"
+      when: SNAPSHOT_STATE is 'revert'

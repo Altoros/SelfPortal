@@ -4,5 +4,8 @@ Soft:
 Python modules:
 - PyVmomi
 - apache-libcloud >= 0.13.3
+- requests >= 2.18.4
+- google-auth >= 1.3.0
 
-Should be run with --no-warnings args.
+# Comments:
+## The only way to restore snapshot at GCP is to recreate instance, so the new id must be scanned

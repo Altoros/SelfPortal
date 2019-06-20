@@ -1,0 +1,51 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - ec2_snapshot:
+        aws_access_key: "{{ AWS_ACCESS_KEY }}"
+        aws_secret_key: "{{ AWS_SECRET_KEY }}"
+        region: "{{ AWS_REGION }}"
+        description: "{{ SNAPSHOT_DESCRIPTION }}"
+        instance_id: "{{ VM_NAME }}"
+        volume_id: /dev/sda
+        snapshot_tags:
+          - key: created_by
+            value: Ansible
+        state: "{{ SNAPSHOT_STATE }}"
+        when: SNAPSHOT_STATE is not 'revert'
+    
+    - name: stop EC2 instance
+      ec2:
+        instance_ids: "{{ VM_NAME }}"
+        state: stopped
+        wait: yes
+      when: SNAPSHOT_STATE is 'revert'
+        
+    - name: get EC2 instance volumes
+      ec2_vol:
+        instance: "{{ VM_NAME }}"
+        state: list
+      register: volumes
+      when: SNAPSHOT_STATE is 'revert'
+      
+    - name: detach volume from instance
+      ec2_vol:
+        instance: None
+        state: absent
+        id: "{{ volumes.volumes | selectattr("attachment_set.device", "equalto", "/dev/sda") | map(attribute="id") | first }}"
+      when: SNAPSHOT_STATE is 'revert'
+        
+    - name: create volume from snapshot
+      ec2_vol:
+        instance: "{{ VM_NAME }}"
+        snapshot: "{{ SNAPSHOT_NAME }}"
+        device_name: /dev/sda
+        delete_on_termination: yes
+      when: SNAPSHOT_STATE is 'revert'
+        
+    - name: start EC2 instance
+      ec2:
+        instance_ids: "{{ VM_NAME }}"
+        state: running
+        wait: yes
+      when: SNAPSHOT_STATE is 'revert'

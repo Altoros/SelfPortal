@@ -1,0 +1,10 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - gcp_compute_instance_facts:
+        auth_kind: serviceaccount
+        project: "{{ GCP_PROJECT_ID }}"
+        service_account_file: "{{ GCP_CREDENTIALS_FILE }}"
+        zone: "{{ DEFAULT_ZONE }}-a"
+        filters:
+          - "name = {{ VM_NAME }}"
